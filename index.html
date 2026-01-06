@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Habitat Rooms — Custom In-Home Habitats</title>
+  <meta name="description" content="Custom in-home habitats for reptiles & exotic pets. Heated floors, waterproof zones, bioactive substrates, feeding & service access, and more." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%2310b981%27/%3E%3C/svg%3E" />
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* smooth scroll & nicer focus */
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900">
+  <script>
+    // =======================
+    // ⚙️ QUICK SETTINGS (edit)
+    // =======================
+    const BRAND = {
+      name: "Habitat Rooms",                 // TODO: your business name
+      tagline: "Custom in-home habitats for reptiles & exotic pets",
+      email: "zyancy27@gmail.com",            // TODO: your business inbox
+      phone: "(678) 367-9872",               // TODO: your number
+      area: "Atlanta, GA"                    // TODO: your city/region
+    };
+    // Optional: a Formspree (or similar) endpoint to receive submissions as email
+    // Leave blank to fall back to a mailto: email draft on submit
+    const FORM_ENDPOINT = ""; // e.g., "https://formspree.io/f/abcd1234"
+
+    // feature list and pricing knobs (ballpark only — tune to taste)
+    const FEATURE_PREMIUMS = {
+      heatedFloors: 2500,
+      separateFeeding: 900,
+      waterproofZone: 1800,
+      greenery: 600,
+      hiddenTrash: 400,
+      openPlay: 700,
+      bioSubstrate: 350,
+      melamine: 500
+    };
+    const BASE_RATE_PER_SQFT = 150; // very rough, adjust per your costs
+    const EXTRA_PET_ADJ = 300;      // per pet after the first
+  </script>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="python-logo.png" alt="Logo" class="w-9 h-9 rounded-2xl" />
+        <div>
+          <div id="brandName" class="font-semibold leading-tight">Habitat Rooms</div>
+          <div id="brandTagline" class="text-xs text-neutral-500 -mt-0.5">Custom in-home habitats for reptiles & exotic pets</div>
+        </div>
+      </div>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a href="#features" class="hover:text-emerald-700">Features</a>
+        <a href="#process" class="hover:text-emerald-700">Process</a>
+        <a href="#consult" class="px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700">Request a consult</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-emerald-50 to-transparent">
+    <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+            Habitat Rooms for <span class="text-emerald-700">exotic pets</span>
+          </h1>
+          <p class="mt-4 text-lg text-neutral-600">
+            We build real, livable spaces—heated floors, waterproof zones, greenery, feeding & service access—so your pet thrives and your home stays beautiful.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#consult" class="px-5 py-3 rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700">Request a consultation</a>
+            <a href="#features" class="px-5 py-3 rounded-2xl border hover:bg-white">Explore features</a>
+          </div>
+          <p id="serviceArea" class="mt-4 text-sm text-neutral-500">Serving Atlanta, GA and surrounding areas.</p>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-[url('Siren-12.jpg')] bg-cover bg-center shadow-2xl ring-1 ring-black/5"></div>
+          <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow p-3 text-sm ring-1 ring-black/5">
+            <div class="font-semibold">Safety-first build</div>
+            <div class="text-neutral-500">Thermals • Humidity • Access • Cleanability</div>
+          </div>
+          <p class="mt-3 text-sm text-neutral-600 text-center">Adonis, my baby girl</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-10">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-semibold text-emerald-700">Built with care—for creatures that matter</h2>
+      <p class="mt-4 text-neutral-700 text-lg leading-relaxed">
+        it hurts me that there are so many out there that release their snakes into the wilds because they either dont have the space, or don't know how to care for their exotic pets once they get to bigger sizes. We are not a "big-box" business. this is my a passion project to help people like me who want more for animals under your care, driven by someone local who truly cares. I started this because I believe your animals deserve more than a  simple box—they deserve a home. Not just a cage, but a calm, natural, enriching space they can thrive in.
+      </p>
+      <p class="mt-4 text-neutral-700 text-lg leading-relaxed">
+        Every build is personal. we’ll come see your space if your comfortable, and design something both of you and your exotic (or domestic) pet will love. I want to help you create peace, comfort, and a real quality of life for the animal you care about.
+      </p>
+      <p class="mt-4 text-neutral-500 text-sm italic">
+        —From one animal lover to another
+      </p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-14">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold">Features you can include</h2>
+      <p class="mt-2 text-neutral-600">Pick what fits your species and space. We’ll verify feasibility during the site visit.</p>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Heated floors (SunTouch)</div>
+          <p class="text-sm text-neutral-600 mt-1">Stable thermals for reptiles; zoned heat where needed.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Separate feeding area</div>
+          <p class="text-sm text-neutral-600 mt-1">Reduce association with handling zones; safer routines.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Waterproof / water zone</div>
+          <p class="text-sm text-neutral-600 mt-1">Mist, soak, or drinking features with proper containment.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Greenery & climb “tree”</div>
+          <p class="text-sm text-neutral-600 mt-1">Behavioral enrichment and natural movement paths.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Hidden waste area</div>
+          <p class="text-sm text-neutral-600 mt-1">Discrete, easy-service disposal compartment.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Open play & hide zones</div>
+          <p class="text-sm text-neutral-600 mt-1">Exploration, cover, and stress reduction by design.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Bioactive substrate</div>
+          <p class="text-sm text-neutral-600 mt-1">Naturalistic cleanup crew & moisture buffering.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white shadow ring-1 ring-black/5">
+          <div class="font-semibold">Melamine-finished panels</div>
+          <p class="text-sm text-neutral-600 mt-1">Cleanable, bright interiors with durable surfaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-14 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold">How it works</h2>
+      <div class="mt-8 grid md:grid-cols-4 gap-5">
+        <div class="p-5 rounded-2xl border">
+          <div class="font-semibold">1) Site visit & feasibility</div>
+          <p class="text-sm text-neutral-600 mt-1">We measure, review access & safety, and align on goals.</p>
+        </div>
+        <div class="p-5 rounded-2xl border">
+          <div class="font-semibold">2) Concept & estimate</div>
+          <p class="text-sm text-neutral-600 mt-1">Pick features; we share a transparent, line-item estimate.</p>
+        </div>
+        <div class="p-5 rounded-2xl border">
+          <div class="font-semibold">3) Build & install</div>
+          <p class="text-sm text-neutral-600 mt-1">Fabrication, waterproofing, finishing, then clean install.</p>
+        </div>
+        <div class="p-5 rounded-2xl border">
+          <div class="font-semibold">4) Handover & care guide</div>
+          <p class="text-sm text-neutral-600 mt-1">We test thermals & humidity; you get a cleaning guide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Form + Estimator -->
+  <section id="consult" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-5 gap-10">
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <h2 class="text-2xl sm:text-3xl font-bold">Request a consultation</h2>
+          <p class="mt-2 text-neutral-600">Tell us about your space and your pet’s needs. We’ll confirm a visit and provide a custom quote.</p>
+
+          <form id="consultForm" class="mt-6 space-y-5">
+            <!-- Contact -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-medium">First name *</label>
+                <input name="firstName" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Last name *</label>
+                <input name="lastName" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-medium">Email *</label>
+                <input name="email" type="email" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Phone</label>
+                <input name="phone" class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-medium">Address *</label>
+                <input name="address" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div>
+                  <label class="text-sm font-medium">City *</label>
+                  <input name="city" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+                </div>
+                <div>
+                  <label class="text-sm font-medium">State *</label>
+                  <input name="state" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+                </div>
+                <div>
+                  <label class="text-sm font-medium">ZIP</label>
+                  <input name="zip" class="mt-1 w-full rounded-xl border px-3 py-2" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Pet & space -->
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label class="text-sm font-medium">Pet type</label>
+                <select name="petType" class="mt-1 w-full rounded-xl border px-3 py-2">
+                  <option value="reptile">Reptile</option>
+                  <option value="amphibian">Amphibian</option>
+                  <option value="bird">Bird</option>
+                  <option value="mammal">Small mammal</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-sm font-medium">Species</label>
+                <input name="species" placeholder="e.g., ball python" class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+              <div>
+                <label class="text-sm font-medium"># of pets</label>
+                <input name="petsCount" type="number" min="1" value="1" class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label class="text-sm font-medium">Length (ft)</label>
+                <input name="lengthFt" type="number" step="0.1" placeholder="e.g., 8" class="mt-1 w-full rounded-xl border px-3 py-2 area-input" />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Width (ft)</label>
+                <input name="widthFt" type="number" step="0.1" placeholder="e.g., 3" class="mt-1 w-full rounded-xl border px-3 py-2 area-input" />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Height (ft)</label>
+                <input name="heightFt" type="number" step="0.1" placeholder="e.g., 7" class="mt-1 w-full rounded-xl border px-3 py-2" />
+              </div>
+            </div>
+
+            <!-- Features -->
+            <fieldset class="grid sm:grid-cols-2 gap-3">
+              <legend class="text-sm font-medium mb-1">Features</legend>
+              <label class="flex items-center gap-2"><input type="checkbox" name="heatedFloors" /> Heated floors (SunTouch)</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="separateFeeding" /> Separate feeding area</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="waterproofZone" /> Waterproof / water zone</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="greenery" /> Greenery + climb tree</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="hiddenTrash" /> Hidden waste area</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="openPlay" /> Open play & hide zones</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="bioSubstrate" /> Bioactive substrate</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="melamine" /> Melamine-finished panels</label>
+            </fieldset>
+
+            <div class="flex items-center gap-2">
+              <input id="waterPlumbed" type="checkbox" name="waterPlumbed" />
+              <label for="waterPlumbed" class="text-sm">Space already has nearby plumbing</label>
+            </div>
+
+            <div>
+              <label class="text-sm font-medium">Preferred visit date</label>
+              <input name="preferredDate" type="date" class="mt-1 w-full rounded-xl border px-3 py-2" />
+            </div>
+
+            <div>
+              <label class="text-sm font-medium">Notes</label>
+              <textarea name="notes" rows="4" placeholder="Room photos link, special constraints, etc." class="mt-1 w-full rounded-xl border px-3 py-2"></textarea>
+            </div>
+
+            <button class="w-full sm:w-auto px-5 py-3 rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700">Send request</button>
+            <p id="submitHint" class="text-xs text-neutral-500 mt-1">We’ll confirm details by email/phone.</p>
+          </form>
+        </div>
+
+        <!-- Estimator / Summary -->
+        <aside class="lg:col-span-2">
+          <div class="p-5 rounded-2xl bg-neutral-100 border">
+            <h3 class="font-semibold">Ballpark estimate (preview)</h3>
+            <p class="text-sm text-neutral-600">Adjust length/width and toggle features to see a rough range.</p>
+            <dl class="mt-4 grid grid-cols-2 gap-2 text-sm">
+              <dt class="text-neutral-500">Area</dt>
+              <dd id="areaOut" class="font-medium text-right">0.00 sq ft</dd>
+              <dt class="text-neutral-500">Base (at $150/sqft)</dt>
+              <dd id="baseOut" class="font-medium text-right">$0</dd>
+              <dt class="text-neutral-500">Features</dt>
+              <dd id="featOut" class="font-medium text-right">$0</dd>
+              <dt class="text-neutral-500">Add’l pets</dt>
+              <dd id="petsOut" class="font-medium text-right">$0</dd>
+            </dl>
+            <div class="mt-4 p-4 rounded-xl bg-white shadow ring-1 ring-black/5">
+              <div class="text-sm text-neutral-500">Estimated range</div>
+              <div id="rangeOut" class="text-2xl font-extrabold">$0 – $0</div>
+              <div class="text-xs text-neutral-500 mt-1">Not a quote. Final pricing after site visit & design.</div>
+            </div>
+            <div class="mt-4 text-sm">
+              <div class="font-medium">Questions?</div>
+              <div class="text-neutral-700">
+                Please text my number or send me an email with the word <strong>SNAKE</strong>. If emailing, please include any questions you might have — I will reach out as soon as I see your message and will make time to step away to talk with you. Thank you for considering our services.
+              </div>
+              <div class="mt-2">Call <span id="brandPhone">(404) 555-0199</span> or email <a id="brandEmail" href="#" class="text-emerald-700 underline">hello@example.com</a></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10">
+    <div class="max-w-6xl mx-auto px-4 text-sm text-neutral-600 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>© <span id="yearNow"></span> <span id="brandNameFoot">Habitat Rooms</span>. All rights reserved.</div>
+      <div class="text-neutral-500">Serving <span id="footArea">Atlanta, GA</span></div>
+    </div>
+  </footer>
+
+  <script>
+    // ================
+    // Page wiring
+    // ================
+    document.getElementById("brandName").textContent = BRAND.name;
+    document.getElementById("brandTagline").textContent = BRAND.tagline;
+    document.getElementById("serviceArea").textContent = `Serving ${BRAND.area} and surrounding areas.`;
+    document.getElementById("brandPhone").textContent = BRAND.phone;
+    document.getElementById("brandEmail").textContent = BRAND.email;
+    document.getElementById("brandEmail").href = `mailto:${encodeURIComponent(BRAND.email)}`;
+    document.getElementById("brandNameFoot").textContent = BRAND.name;
+    document.getElementById("footArea").textContent = BRAND.area;
+    document.getElementById("yearNow").textContent = new Date().getFullYear();
+
+    // ================
+    // Estimator logic
+    // ================
+    const $form = document.getElementById("consultForm");
+    const areaInputs = $form.querySelectorAll(".area-input");
+    const petsInput = $form.elements["petsCount"];
+    const featureNames = Object.keys(FEATURE_PREMIUMS);
+
+    function currency(n) {
+      return n.toLocaleString(undefined, { style: "currency", currency: "USD" });
+    }
+
+    function getArea() {
+      const L = parseFloat($form.elements["lengthFt"].value) || 0;
+      const W = parseFloat($form.elements["widthFt"].value) || 0;
+      return Math.max(0, L * W);
+    }
+
+    function getFeaturesTotal() {
+      let sum = 0;
+      featureNames.forEach((key) => {
+        if ($form.elements[key].checked) sum += (FEATURE_PREMIUMS[key] || 0);
+      });
+      return sum;
+    }
+
+    function getPetsAdj() {
+      const count = Math.max(1, parseInt(petsInput.value || "1", 10));
+      return Math.max(0, (count - 1) * EXTRA_PET_ADJ);
+    }
+
+    function recalc() {
+      const area = getArea();
+      const base = Math.round(area * BASE_RATE_PER_SQFT);
+      const feat = getFeaturesTotal();
+      const petsAdj = getPetsAdj();
+      const low = Math.max(4000, base + feat + petsAdj);
+      const high = Math.round(low * 1.25);
+
+      document.getElementById("areaOut").textContent = `${area.toFixed(2)} sq ft`;
+      document.getElementById("baseOut").textContent = currency(base);
+      document.getElementById("featOut").textContent = currency(feat);
+      document.getElementById("petsOut").textContent = currency(petsAdj);
+      document.getElementById("rangeOut").textContent = `${currency(low)} – ${currency(high)}`;
+    }
+
+    // initial and listeners
+    recalc();
+    areaInputs.forEach(el => el.addEventListener("input", recalc));
+    petsInput.addEventListener("input", recalc);
+    featureNames.forEach(key => $form.elements[key].addEventListener("change", recalc));
+
+    // ========================
+    // Submission (endpoint or mailto fallback)
+    // ========================
+    $form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Basic required
+      const required = ["firstName", "lastName", "email", "address", "city", "state"];
+      for (const name of required) {
+        if (!($form.elements[name].value || "").trim()) {
+          alert("Please complete the required contact and address fields.");
+          return;
+        }
+      }
+
+      // build payload
+      const payload = {
+        brand: BRAND.name,
+        submittedAt: new Date().toISOString(),
+        contact: {
+          name: `${$form.elements["firstName"].value} ${$form.elements["lastName"].value}`.trim(),
+          email: $form.elements["email"].value,
+          phone: $form.elements["phone"].value,
+          address: `${$form.elements["address"].value}, ${$form.elements["city"].value}, ${$form.elements["state"].value} ${$form.elements["zip"].value}`.trim()
+        },
+        project: {
+          petType: $form.elements["petType"].value,
+          species: $form.elements["species"].value,
+          petsCount: parseInt($form.elements["petsCount"].value || "1", 10),
+          footprint: {
+            lengthFt: $form.elements["lengthFt"].value,
+            widthFt: $form.elements["widthFt"].value,
+            heightFt: $form.elements["heightFt"].value,
+            areaSqFt: getArea()
+          },
+          features: featureNames.filter(k => $form.elements[k].checked),
+          waterPlumbed: $form.elements["waterPlumbed"].checked,
+          preferredDate: $form.elements["preferredDate"].value,
+          notes: $form.elements["notes"].value
+        },
+        estimatePreview: (function(){
+          const area = getArea();
+          const base = Math.round(area * BASE_RATE_PER_SQFT);
+          const feat = getFeaturesTotal();
+          const pets = getPetsAdj();
+          const low = Math.max(4000, base + feat + pets);
+          const high = Math.round(low * 1.25);
+          return [low, high];
+        })()
+      };
+
+      // Option A: POST to endpoint
+      if (FORM_ENDPOINT) {
+        try {
+          const res = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            alert("Thanks! Your consultation request was sent. We’ll be in touch.");
+            $form.reset();
+            recalc();
+            return;
+          }
+          throw new Error("Non-OK response");
+        } catch (err) {
+          console.error(err);
+          alert("Couldn’t reach the form endpoint. We’ll open an email draft instead.");
+        }
+      }
+
+      // Option B: mailto fallback
+      const lines = [
+        `Name: ${payload.contact.name}`,
+        `Email: ${payload.contact.email}`,
+        `Phone: ${payload.contact.phone}`,
+        `Address: ${payload.contact.address}`,
+        ``,
+        `Pet Type: ${payload.project.petType}`,
+        `Species: ${payload.project.species}`,
+        `# of Pets: ${payload.project.petsCount}`,
+        `Footprint (L×W×H ft): ${payload.project.footprint.lengthFt} × ${payload.project.footprint.widthFt} × ${payload.project.footprint.heightFt}`,
+        `Area: ${payload.project.footprint.areaSqFt.toFixed(2)} sq ft`,
+        `Features: ${payload.project.features.join(", ") || "(none)"}`,
+        `Plumbed Water: ${payload.project.waterPlumbed ? "Yes" : "No"}`,
+        `Preferred Date: ${payload.project.preferredDate || "(flexible)"}`,
+        ``,
+        `Notes: ${payload.project.notes || "(none)"}`,
+        ``,
+        `Estimate preview: ${payload.estimatePreview[0]} – ${payload.estimatePreview[1]}`
+      ].join("\n");
+
+      const subject = encodeURIComponent(`${BRAND.name} – Consultation Request`);
+      const body = encodeURIComponent(lines);
+      window.location.href = `mailto:${BRAND.email}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
